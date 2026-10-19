@@ -1,0 +1,356 @@
+{
+  "version": "1.0.0",
+  "last_verified": "2026-03-28",
+  "visit_types": {
+    "follow_up": {
+      "navigation": {
+        "clinical_tab": "#tab-clinical",
+        "visit_note_section": "#visit-notes-section",
+        "new_note_button": "button[data-action='new-visit-note']"
+      },
+      "fields": {
+        "soap.subjective.chief_complaint": {
+          "selector": "#visit_note_subjective textarea.chief-complaint",
+          "fallback_selector": "textarea[name='subjective_chief_complaint']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.subjective.pain_scale": {
+          "selector": "select[name='pain_level']",
+          "fallback_selector": "#pain-scale-dropdown",
+          "type": "select",
+          "action": "select_option",
+          "required": true
+        },
+        "soap.subjective.pain_location": {
+          "selector": "input[name='pain_location']",
+          "type": "input",
+          "action": "fill",
+          "required": false
+        },
+        "soap.subjective.patient_report": {
+          "selector": "#subjective-narrative textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.vital_signs.bp": {
+          "selector_systolic": "input[name='bp_systolic']",
+          "selector_diastolic": "input[name='bp_diastolic']",
+          "type": "split_input",
+          "action": "fill_split",
+          "transform": "split_bp",
+          "required": true
+        },
+        "soap.objective.vital_signs.hr": {
+          "selector": "input[name='heart_rate']",
+          "type": "input",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.vital_signs.rr": {
+          "selector": "input[name='resp_rate']",
+          "type": "input",
+          "action": "fill",
+          "required": false
+        },
+        "soap.objective.vital_signs.spo2": {
+          "selector": "input[name='spo2']",
+          "type": "input",
+          "action": "fill",
+          "required": false
+        },
+        "soap.objective.rom_measurements": {
+          "selector": "#rom-table",
+          "type": "dynamic_table",
+          "action": "fill_rom_table",
+          "row_selector": ".rom-row",
+          "add_row_button": "button.add-rom-row",
+          "columns": {
+            "joint": "select.rom-joint",
+            "motion": "select.rom-motion",
+            "arom": "input.rom-arom",
+            "prom": "input.rom-prom"
+          },
+          "required": false
+        },
+        "soap.objective.strength": {
+          "selector": "#strength-table",
+          "type": "dynamic_table",
+          "action": "fill_strength_table",
+          "row_selector": ".strength-row",
+          "add_row_button": "button.add-strength-row",
+          "columns": {
+            "muscle_group": "input.strength-muscle",
+            "mmt_grade": "select.strength-grade"
+          },
+          "required": false
+        },
+        "soap.objective.functional_assessment.transfers": {
+          "selector": "select[name='transfer_status']",
+          "type": "select",
+          "action": "select_option",
+          "required": true
+        },
+        "soap.objective.functional_assessment.ambulation": {
+          "selector": "textarea[name='ambulation_status']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.functional_assessment.balance": {
+          "selector": "textarea[name='balance_status']",
+          "type": "textarea",
+          "action": "fill",
+          "required": false
+        },
+        "soap.objective.edema": {
+          "selector": "textarea[name='edema_notes']",
+          "type": "textarea",
+          "action": "fill",
+          "required": false
+        },
+        "soap.assessment.progress": {
+          "selector": "#assessment-progress textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.assessment.skilled_need": {
+          "selector": "#assessment-skilled-need textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.assessment.homebound_status": {
+          "selector": "#homebound-status textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.treatment_provided": {
+          "selector": "#treatment-provided textarea",
+          "type": "textarea",
+          "action": "fill",
+          "transform": "join_list",
+          "required": true
+        },
+        "soap.plan.patient_response": {
+          "selector": "textarea[name='patient_response']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.next_visit": {
+          "selector": "input[name='next_visit_date']",
+          "type": "date_input",
+          "action": "fill_date",
+          "required": true
+        },
+        "soap.plan.frequency": {
+          "selector": "textarea[name='visit_frequency']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.goals_update": {
+          "selector": "#goals-update textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": false
+        },
+        "soap.plan.discharge_planning": {
+          "selector": "#discharge-plan textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": false
+        }
+      }
+    },
+    "initial_eval": {
+      "navigation": {
+        "clinical_tab": "#tab-clinical",
+        "eval_section": "#evaluation-section",
+        "new_eval_button": "button[data-action='new-evaluation']"
+      },
+      "fields": {
+        "soap.subjective.chief_complaint": {
+          "selector": "#eval_subjective textarea.chief-complaint",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.subjective.pain_scale": {
+          "selector": "select[name='eval_pain_level']",
+          "type": "select",
+          "action": "select_option",
+          "required": true
+        },
+        "soap.subjective.pain_location": {
+          "selector": "input[name='eval_pain_location']",
+          "type": "input",
+          "action": "fill",
+          "required": true
+        },
+        "soap.subjective.patient_report": {
+          "selector": "#eval-subjective-narrative textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.subjective.medication_changes": {
+          "selector": "textarea[name='eval_medications']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.vital_signs.bp": {
+          "selector_systolic": "input[name='eval_bp_systolic']",
+          "selector_diastolic": "input[name='eval_bp_diastolic']",
+          "type": "split_input",
+          "action": "fill_split",
+          "transform": "split_bp",
+          "required": true
+        },
+        "soap.objective.vital_signs.hr": {
+          "selector": "input[name='eval_heart_rate']",
+          "type": "input",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.vital_signs.rr": {
+          "selector": "input[name='eval_resp_rate']",
+          "type": "input",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.vital_signs.spo2": {
+          "selector": "input[name='eval_spo2']",
+          "type": "input",
+          "action": "fill",
+          "required": false
+        },
+        "soap.objective.rom_measurements": {
+          "selector": "#eval-rom-table",
+          "type": "dynamic_table",
+          "action": "fill_rom_table",
+          "row_selector": ".eval-rom-row",
+          "add_row_button": "button.add-eval-rom-row",
+          "columns": {
+            "joint": "select.rom-joint",
+            "motion": "select.rom-motion",
+            "arom": "input.rom-arom",
+            "prom": "input.rom-prom"
+          },
+          "required": true
+        },
+        "soap.objective.strength": {
+          "selector": "#eval-strength-table",
+          "type": "dynamic_table",
+          "action": "fill_strength_table",
+          "row_selector": ".eval-strength-row",
+          "add_row_button": "button.add-eval-strength-row",
+          "columns": {
+            "muscle_group": "input.strength-muscle",
+            "mmt_grade": "select.strength-grade"
+          },
+          "required": true
+        },
+        "soap.objective.functional_assessment.transfers": {
+          "selector": "select[name='eval_transfer_status']",
+          "type": "select",
+          "action": "select_option",
+          "required": true
+        },
+        "soap.objective.functional_assessment.ambulation": {
+          "selector": "textarea[name='eval_ambulation_status']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.functional_assessment.balance": {
+          "selector": "textarea[name='eval_balance_status']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.objective.functional_assessment.adl_status": {
+          "selector": "textarea[name='eval_adl_status']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.assessment.progress": {
+          "selector": "#eval-assessment textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.assessment.skilled_need": {
+          "selector": "#eval-skilled-need textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.assessment.homebound_status": {
+          "selector": "#eval-homebound textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.treatment_provided": {
+          "selector": "#eval-treatment textarea",
+          "type": "textarea",
+          "action": "fill",
+          "transform": "join_list",
+          "required": true
+        },
+        "soap.plan.frequency": {
+          "selector": "textarea[name='eval_frequency']",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.goals_update": {
+          "selector": "#eval-goals textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": true
+        },
+        "soap.plan.discharge_planning": {
+          "selector": "#eval-discharge textarea",
+          "type": "textarea",
+          "action": "fill",
+          "required": false
+        }
+      }
+    }
+  },
+  "common": {
+    "login": {
+      "url": "https://www.kinnser.net/",
+      "username_field": "#username",
+      "password_field": "#password",
+      "login_button": "#login-button",
+      "totp_field": "input[name='totp_code']",
+      "totp_submit": "button[type='submit']",
+      "dashboard_indicator": "#main-dashboard",
+      "sms_2fa_indicator": ".sms-verification-prompt",
+      "sms_code_field": "input[name='sms_code']"
+    },
+    "patient_search": {
+      "search_input": "#patient-search-input",
+      "search_button": "#patient-search-btn",
+      "results_container": "#patient-search-results",
+      "result_row": ".patient-result-row",
+      "patient_name_cell": ".patient-name",
+      "patient_id_cell": ".patient-mrn"
+    },
+    "save": {
+      "save_button": "button[data-action='save-note']",
+      "save_confirm": ".save-confirmation",
+      "save_error": ".save-error-message"
+    }
+  }
+}

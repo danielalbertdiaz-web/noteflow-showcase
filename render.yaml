@@ -1,0 +1,28 @@
+databases:
+  - name: noteflow-db
+    plan: free
+    databaseName: noteflow
+    user: noteflow
+
+services:
+  - type: web
+    name: noteflow
+    plan: free
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: noteflow-db
+          property: connectionString
+      - key: GOOGLE_AI_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ENCRYPTION_KEY
+        generateValue: true
+      - key: REDIS_URL
+        value: ""
+      - key: PYTHON_VERSION
+        value: "3.12.3"

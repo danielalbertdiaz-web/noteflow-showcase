@@ -1,0 +1,10 @@
+noteflow-venv/
+__pycache__/
+*.pyc
+backend/.env
+.env
+.env.local
+node_modules/
+.next/
+.vercel/
+.pytest_cache/
